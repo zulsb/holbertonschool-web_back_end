@@ -59,12 +59,12 @@ class Server:
             Return:
                 A dictionary.
         """
-        records: int = self.get_page(page, page_size)
+        data: int = self.get_page(page, page_size)
         totalPages: int = math.ceil(len(self.__dataset) / page_size)
         return {
-            'page_size': len(records),
+            'page_size': len(data),
             'page': page,
-            'data': records,
+            'data': data,
             'next_page': page + 1 if (page + 1) <= totalPages else None,
             'prev_page': page - 1 if (page - 1) > 0 else None,
             'total_pages': totalPages
