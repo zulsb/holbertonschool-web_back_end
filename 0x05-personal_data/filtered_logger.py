@@ -2,6 +2,7 @@
 """ Personal data
 """
 import logging
+import mysql.connector
 import re
 import os
 from typing import List
