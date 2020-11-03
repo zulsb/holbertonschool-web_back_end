@@ -8,7 +8,7 @@ from typing import List
 
 def filter_datum(fields: List[str], redaction: str,
                  message: str, separator: str) -> str:
-    """ Function regex-ing.
+    """ Function to hide personal data.
         Args:
             fields: a list of strings.
             redaction: a string representing by what the
@@ -20,6 +20,6 @@ def filter_datum(fields: List[str], redaction: str,
             The log message obfuscated.
     """
     for i in fields:
-        message = re.sub(r"{}=(.*?){}".format(i, separator),
+        obfuscated = re.sub(r"{}=(.*?){}".format(i, separator),
                          f'{i}={redaction}{separator}', message)
-    return message
+    return obfuscated
