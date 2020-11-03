@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Personal data
+""" Personal data.
 """
 import logging
 import mysql.connector
@@ -80,3 +80,16 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
         user=os.getenv('PERSONAL_DATA_DB_USERNAME'),
         password=os.getenv('PERSONAL_DATA_DB_PASSWORD')
     )
+
+
+def main():
+    """ Function that database connection using get_db and
+        retrieve all rows in the users table.
+    """
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM users;")
+
+
+if __name__ == "__main__":
+    main()
