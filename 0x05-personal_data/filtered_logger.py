@@ -21,5 +21,5 @@ def filter_datum(fields: List[str], redaction: str,
     """
     for i in fields:
         obfuscated = re.sub(r"{}=(.*?){}".format(i, separator),
-                         f'{i}={redaction}{separator}', message)
+                            f'{i}={redaction}{separator}', message)
     return obfuscated
