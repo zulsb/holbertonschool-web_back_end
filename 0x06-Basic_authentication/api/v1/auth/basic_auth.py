@@ -2,6 +2,7 @@
 """ BasicAuth module.
 """
 from api.v1.auth.auth import Auth
+import base64
 
 
 class BasicAuth(Auth):
@@ -10,7 +11,7 @@ class BasicAuth(Auth):
 
     def extract_base64_authorization_header(self,
                                             authorization_header: str) -> str:
-        """ Method that returns the Base64 part of the authorization header.
+        """ Method that extract the Base64 part of the authorization header.
             Arg:
             authorization_header: string type.
         """
@@ -21,3 +22,21 @@ class BasicAuth(Auth):
         if authorization_header[:6] != "Basic ":
             return None
         return authorization_header[6:]
+
+    def decode_base64_authorization_header(
+                                        self, base64_authorization_header: str
+                                            ) -> str:
+        """ Method that decode the Base64 part of the authorization header.
+            Arg:
+            authorization_header: string type.
+        """
+        if base64_authorization_header is None:
+            return None
+        if type(base64_authorization_header) is not str:
+            return None
+        try:
+            base64_authorization_header = base64.b64decode(
+                                            base64_authorization_header)
+        except Exception:
+            return None
+        return base64_authorization_header.decode("utf-8")
