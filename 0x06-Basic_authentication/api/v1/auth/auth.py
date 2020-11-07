@@ -28,13 +28,18 @@ class Auth:
         return True
 
     def authorization_header(self, request=None) -> str:
-        """ Method
+        """ Method to validate all requests to protect the API.
             Args:
                 request.
             Return:
                 None - request.
         """
-        return None
+        if request is None:
+            return None
+        if "Authorization" not in request.headers:
+            return None
+        else:
+            return request.headers["Authorization"]
 
     def current_user(self, request=None) -> TypeVar('User'):
         """ Method
