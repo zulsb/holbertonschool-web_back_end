@@ -4,6 +4,7 @@
 from api.v1.auth.auth import Auth
 from uuid import uuid4
 
+
 class SessionAuth(Auth):
     """ Class to manage the API authentication that inherits from Auth.
     """
@@ -20,8 +21,7 @@ class SessionAuth(Auth):
         self.user_id_by_session_id[sessionID] = user_id
         return sessionID
 
-
-    def user_id_for_session_id(self, session_id: str=None) -> str:
+    def user_id_for_session_id(self, session_id: str = None) -> str:
         """ Method for storing and retrieving a link between a
             User ID and a Session ID.
             Arg:
