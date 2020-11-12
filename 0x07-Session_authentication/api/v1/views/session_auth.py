@@ -13,8 +13,8 @@ def logIn() -> str:
     """ Return:
             Dictionary representation of the User authenticated.
     """
-    email = request.form.get("email")
-    password = request.form.get("password")
+    email = request.form.get('email')
+    password = request.form.get('password')
 
     if not email:
         return jsonify({"error": "email missing"}), 400
@@ -48,4 +48,5 @@ def logOut() -> str:
     from api.v1.app import auth
     if auth.destroy_session(request):
         return jsonify({}), 200
-    abort(404)
+    else:
+        return False, abort(404)
