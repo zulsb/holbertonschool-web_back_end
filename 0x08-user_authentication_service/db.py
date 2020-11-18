@@ -60,8 +60,8 @@ class DB:
         userFound = self.find_user_by(id=user_id)
 
         for ky, ve in kwargs.items():
-            if ky not in userFound.__dict__:
-                raise ValueError
+            if ky not in list(userFound.__dict__.keys()):
+                raise ValueError()
             setattr(userFound, ky, ve)
         self._session.add(userFound)
         self._session.commit()
