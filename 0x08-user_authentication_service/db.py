@@ -28,7 +28,7 @@ class DB:
         return self.__session
 
     def add_user(self, email: str, hashed_password: str) -> User:
-        """ Create and add a user to the database.
+        """ Method that create and add a user to the database.
             Args:
                 email: string type.
                 hashed_password: string type.
@@ -40,11 +40,27 @@ class DB:
         self._session.commit()
         return addUser
 
-    def find_user_by(self, **kwargs) -> User:
-        """ Find a user through keywords in the database.
+    def find_user_by(self, **kwargs: dict) -> User:
+        """ Method that find a user through keywords in the database.
             Arg:
                 **kwargs: Arbitrary keyword.
             Return:
                 The first row found in the users table.
         """
         return self._session.query(User).filter_by(**kwargs).one()
+
+    def update_user(self, user_id: int, **kwargs: dict) -> None:
+        """ Method that update a user in the database.
+            Arg:
+                user_id: Integer type.
+                **kwargs: Arbitrary keyword.
+            Return:
+                None.
+        """
+        userFound = self.find_user_by(id=user_id)
+
+        for ky, ve in kwargs.items():
+            setattr(userFound, ky, ve)
+            if ky not in userFound.__dict__:
+                raise ValueError()
+        return None
