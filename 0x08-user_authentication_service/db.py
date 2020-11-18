@@ -49,7 +49,7 @@ class DB:
         """
         return self._session.query(User).filter_by(**kwargs).one()
 
-    def update_user(self, user_id: int, **kwargs) -> None:
+    def update_user(self, user_id: int, **kwargs: dict) -> None:
         """ Method that update a user in the database.
             Arg:
                 user_id: Integer type.
