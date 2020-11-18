@@ -63,6 +63,6 @@ class DB:
             if ky not in userFound.__dict__:
                 raise ValueError
             setattr(userFound, ky, ve)
-            self._session.add(userFound)
-            self._session.commit()
+        self._session.add(userFound)
+        self._session.commit()
         return None
