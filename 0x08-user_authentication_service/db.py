@@ -49,7 +49,7 @@ class DB:
         """
         return self._session.query(User).filter_by(**kwargs).one()
 
-    def update_user(self, user_id: int, **kwargs: dict) -> None:
+    def update_user(self, user_id: int, **kwargs) -> None:
         """ Method that update a user in the database.
             Arg:
                 user_id: Integer type.
@@ -63,6 +63,6 @@ class DB:
             if ky not in userFound.__dict__:
                 raise ValueError()
             setattr(userFound, ky, ve)
-        self._session.add(userFound)
-        self._session.commit()
+            self._session.add(userFound)
+            self._session.commit()
         return None
