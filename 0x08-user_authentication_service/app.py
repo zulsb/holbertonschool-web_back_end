@@ -41,7 +41,7 @@ def log_in() -> str:
         abort(401)
     newSession = AUTH.create_session(email)
     log = jsonify({"email": email, "message": "logged in"})
-    response.set_cookie("session_id", newSession)
+    log.set_cookie("session_id", newSession)
     return log
 
 
