@@ -2,7 +2,7 @@
 """ App module.
 """
 from auth import Auth
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, redirect
 
 app = Flask(__name__)
 AUTH = Auth()
@@ -28,6 +28,33 @@ def registerUser() -> str:
                         "message": "user created"})
     except Exception:
         return jsonify({"message": "email already registered"}), 400
+
+
+@app.route('/sessions', methods=['POST'])
+def log_in() -> str:
+    """ Method that login.
+    """
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    if not email or not password or not AUTH.valid_login(email, password):
+        abort(401)
+    log = jsonify({"email": email, "message": "logged in"})
+    return log
+
+
+@app.route('/sessions', methods=['DELETE'])
+def logout() -> str:
+    """ Method that logout.
+    """
+    sessionId = request.cookies.get('session_id')
+
+    if sessionId:
+        user = AUTH.get_user_from_session_id(sessionId)
+        if user:
+            AUTH.destroy_session(user.id)
+            return redirect("http://0.0.0.0:5000/")
+    abort(403)
 
 
 if __name__ == "__main__":
