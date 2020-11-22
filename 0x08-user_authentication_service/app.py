@@ -39,7 +39,7 @@ def log_in() -> str:
 
     if not email or not password or not AUTH.valid_login(email, password):
         abort(401)
-    
+
     newSession = AUTH.create_session(email)
     log = jsonify({"email": email, "message": "logged in"})
     log.set_cookie("session_id", newSession)
