@@ -7,20 +7,35 @@ import requests
 
 def register_user(email: str, password: str) -> None:
     """ Method """
+
+
 def log_in_wrong_password(email: str, password: str) -> None:
     """ Method """
+
+
 def log_in(email: str, password: str) -> str:
     """ Method """
+
+
 def profile_unlogged() -> None:
     """ Method """
+
+
 def profile_logged(session_id: str) -> None:
     """ Method """
+
+
 def log_out(session_id: str) -> None:
     """ Method """
+
+
 def reset_password_token(email: str) -> str:
     """ Method """
+
+
 def update_password(email: str, reset_token: str, new_password: str) -> None:
     """ Method """
+
 
 EMAIL = "guillaume@holberton.io"
 PASSWD = "b4l0u"
