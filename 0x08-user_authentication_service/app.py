@@ -31,7 +31,7 @@ def registerUser() -> str:
 
 
 @app.route('/sessions', methods=['POST'])
-def log_in() -> str:
+def logIn() -> str:
     """ Method that login.
     """
     email = request.form.get('email')
@@ -47,7 +47,7 @@ def log_in() -> str:
 
 
 @app.route('/sessions', methods=['DELETE'])
-def logout() -> str:
+def logOut() -> str:
     """ Method that logout.
     """
     sessionId = request.cookies.get('session_id')
@@ -57,6 +57,18 @@ def logout() -> str:
         if user:
             AUTH.destroy_session(user.id)
             return redirect("http://0.0.0.0:5000/")
+    abort(403)
+
+
+@app.route('/profile', methods=['GET'])
+def userProfile() -> str:
+    """ Function to respond to the GET /profile route.
+    """
+    sessionId = request.cookies.get('session_id')
+    if sessionId:
+        user = AUTH.get_user_from_session_id(sessionId)
+        if user:
+            return jsonify({"email": user.email})
     abort(403)
 
 
