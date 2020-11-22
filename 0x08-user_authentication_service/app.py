@@ -2,7 +2,7 @@
 """ App module.
 """
 from auth import Auth
-from flask import Flask, jsonify, request, redirect
+from flask import Flask, jsonify, request, abort, redirect
 
 app = Flask(__name__)
 AUTH = Auth()
