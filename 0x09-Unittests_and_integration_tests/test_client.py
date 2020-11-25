@@ -30,5 +30,10 @@ class TestGithubOrgClient(unittest.TestCase):
         param(False, repo={"license": {"key": "other_license"}},
               license_key="my_license")
     ])
-    def test_has_license(self, expected, path, license_key):
+    def test_has_license(self, expected, repo, license_key):
         """ Test """
+
+
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """ Class for test integration.
+    """
