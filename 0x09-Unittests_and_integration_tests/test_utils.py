@@ -6,7 +6,7 @@ from utils import access_nested_map
 from parameterized import parameterized, param
 
 
-class TestAccessNestedMap:
+class TestAccessNestedMap(unittest.TestCase):
     """ Class for nested map access test.
     """
     @parameterized.expand([
