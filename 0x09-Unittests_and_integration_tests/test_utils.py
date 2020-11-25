@@ -2,8 +2,9 @@
 """ Unittests and integration tests module.
 """
 import unittest
-from utils import access_nested_map
+from utils import access_nested_map, get_json
 from parameterized import parameterized, param
+from unittest.mock import patch, Mock
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -29,3 +30,17 @@ class TestAccessNestedMap(unittest.TestCase):
         """
         with self.assertRaises(expected):
             access_nested_map(nested_map, path)
+
+
+class TestGetJson(unittest.TestCase):
+    """ Class for test get Json.
+    """
+
+    @parameterized.expand([
+        param(test_url="http://example.com", test_payload={"payload": True}),
+        param(test_url="http://holberton.io", test_payload={"payload": False})
+    ])
+    def test_get_json(self, test_url, test_payload):
+        """ Returns a Mock object with a json method.
+        """
+        self.assertEqual(get_json(test_url), test_payload)
