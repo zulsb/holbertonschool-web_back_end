@@ -20,3 +20,15 @@ class TestGithubOrgClient(unittest.TestCase):
 
     def test_public_repos_url(self):
         """ Test """
+
+    def test_public_repos(self):
+        """ Test """
+
+    @parameterized.expand([
+        param(True, repo={"license": {"key": "my_license"}},
+              license_key="my_license"),
+        param(False, repo={"license": {"key": "other_license"}},
+              license_key="my_license")
+    ])
+    def test_has_license(self, expected, path, license_key):
+        """ Test """
