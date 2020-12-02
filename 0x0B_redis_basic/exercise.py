@@ -3,8 +3,23 @@
 """
 import redis
 import uuid
+from functools import wraps
 from sys import byteorder
 from typing import Union, Optional, Callable
+
+
+def count_calls(method: Callable) -> Callable:
+    """ Method that count calls.
+    """
+    key = method.__qualname__
+
+    @wraps(method)
+    def wrapper(self, *args, **keywords):
+        """ Method wrapper.
+        """
+        self._redis.incr(key)
+        return method(self, *args, **keywords)
+    return wrapper
 
 
 class Cache:
@@ -16,6 +31,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """ Method that generate a random key,
             store the input data in Redis using the random key.
