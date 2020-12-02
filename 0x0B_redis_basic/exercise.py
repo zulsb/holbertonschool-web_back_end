@@ -28,7 +28,8 @@ class Cache:
         self._redis.set(key, data)
         return key
 
-    def get(self, key: str, fn: Optional[Callable]):
+    def get(self, key: str,
+            fn: Optional[Callable]) -> Union[str, bytes, int, float]:
         """ This callable will be used to convert
             the data back to the desired format.
             Args:
