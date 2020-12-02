@@ -16,8 +16,6 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    @call_history
-    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """ Method that generate a random key,
             store the input data in Redis using the random key.
@@ -30,7 +28,7 @@ class Cache:
         self._redis.set(key, data)
         return key
 
-    def get(self, key: str, fn: Optional[Callable]):
+    def get(self, key: str, fn: Optional[Callable] = None):
         """ This callable will be used to convert
             the data back to the desired format.
             Args:
