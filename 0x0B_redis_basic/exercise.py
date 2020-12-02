@@ -45,13 +45,13 @@ def replay(method: Callable):
         of a particular function.
     """
     r = method.__self__._redis
-    key = method.__qualname__
-    inp = r.lrange("{}:inputs".format(key), 0, -1)
-    outp = r.lrange("{}:outputs".format(key), 0, -1)
-    print("{} was called {} times:".format(key,
-                                           r.get(key).decode("utf-8")))
+    keys = method.__qualname__
+    inp = r.lrange("{}:inputs".format(keys), 0, -1)
+    outp = r.lrange("{}:outputs".format(keys), 0, -1)
+    print("{} was called {} times:".format(keys,
+                                           r.get(keys).decode("utf-8")))
     for i, j in tuple(zip(inp, outp)):
-        print("{}(*('{}',)) -> {}".format(key, i.decode("utf-8"),
+        print("{}(*('{}',)) -> {}".format(keys, i.decode("utf-8"),
                                           j.decode("utf-8")))
 
 
