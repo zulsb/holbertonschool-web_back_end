@@ -3,8 +3,8 @@
 """
 import redis
 import uuid
-from typing import Union, Optional, Callable
 from sys import byteorder
+from typing import Union, Optional, Callable
 
 
 class Cache:
@@ -28,8 +28,7 @@ class Cache:
         self._redis.set(key, data)
         return key
 
-    def get(self, key: str,
-            fn: Optional[Callable]) -> Union[str, bytes, int, float]:
+    def get(self, key: str, fn: Optional[Callable]):
         """ This callable will be used to convert
             the data back to the desired format.
             Args:
