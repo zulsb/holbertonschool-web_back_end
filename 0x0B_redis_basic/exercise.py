@@ -50,7 +50,7 @@ def replay(method: Callable):
     outp = r.lrange("{}:outputs".format(key), 0, -1)
     print("{} was called {} times:".format(key,
                                            r.get(key).decode("utf-8")))
-    for i, j in list(zip(inp, outp)):
+    for i, j in tuple(zip(inp, outp)):
         print("{}(*('{}',)) -> {}".format(key, i.decode("utf-8"),
                                           j.decode("utf-8")))
 
