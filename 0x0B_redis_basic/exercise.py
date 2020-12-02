@@ -16,6 +16,8 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
+    @call_history
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """ Method that generate a random key,
             store the input data in Redis using the random key.
@@ -37,8 +39,8 @@ class Cache:
             Return:
                 The convert data.
         """
-        d = self._redis.get(key)
-        return fn(d) if fn else d
+        data = self._redis.get(key)
+        return fn(data) if fn else data
 
     def get_str(self, data: bytes) -> str:
         """ Method that get a string from bytes.
