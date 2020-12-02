@@ -37,8 +37,8 @@ class Cache:
             Return:
                 The convert data.
         """
-        data = self._redis.get(key)
-        return fn(data) if fn else data
+        d = self._redis.get(key)
+        return fn(d) if fn else d
 
     def get_str(self, data: bytes) -> str:
         """ Method that get a string from bytes.
