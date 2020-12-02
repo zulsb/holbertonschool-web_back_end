@@ -45,14 +45,16 @@ def replay(method: Callable):
         of a particular function.
     """
     r = method.__self__._redis
-    keys = method.__qualname__
-    inputs = r.lrange("{}:inputs".format(keys), 0, -1)
-    outputs = r.lrange("{}:outputs".format(keys), 0, -1)
-    print("{} was called {} times:".format(keys,
-                                           r.get(keys).decode("utf-8")))
-    for i, j in tuple(zip(inputs, outputs)):
-        print("{}(*('{}',)) -> {}".format(keys, i.decode("utf-8"),
-                                          j.decode("utf-8")))
+    method_name = method.__qualname__
+
+    inputs = r.lrange("{}:inputs".format(method_name), 0, -1)
+    outputs = r.lrange("{}:outputs".format(method_name), 0, -1)
+
+    print("{} was called {} times:".format(method_name,
+                                           r.get(method_name).decode("utf-8")))
+    for i, o in tuple(zip(inputs, outputs)):
+        print("{}(*('{}',)) -> {}".format(method_name, i.decode("utf-8"),
+                                          o.decode("utf-8")))
 
 
 class Cache:
