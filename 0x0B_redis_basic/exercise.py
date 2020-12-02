@@ -52,7 +52,7 @@ def replay(method: Callable):
                                            r.get(keys).decode("utf-8")))
     for i, j in list(zip(inputs, outputs)):
         attr, result = i.decode("utf-8"), j.decode("utf-8")
-        print("{}(*'{}') -> {}".format(keys, attr, result))
+        print("{}(*{}) -> {}".format(keys, attr, result))
 
 
 class Cache:
