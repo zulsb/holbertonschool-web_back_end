@@ -46,11 +46,11 @@ def replay(method: Callable):
     """
     r = method.__self__._redis
     keys = method.__qualname__
-    inp = r.lrange("{}:inputs".format(keys), 0, -1)
-    outp = r.lrange("{}:outputs".format(keys), 0, -1)
+    inputs = r.lrange("{}:inputs".format(keys), 0, -1)
+    outputs = r.lrange("{}:outputs".format(keys), 0, -1)
     print("{} was called {} times:".format(keys,
                                            r.get(keys).decode("utf-8")))
-    for i, j in tuple(zip(inp, outp)):
+    for i, j in tuple(zip(inputs, outputs)):
         print("{}(*('{}',)) -> {}".format(keys, i.decode("utf-8"),
                                           j.decode("utf-8")))
 
