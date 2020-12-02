@@ -50,7 +50,7 @@ def replay(method: Callable):
     outputs = meRedis.lrange("{}:outputs".format(key), 0, -1)
     print("{} was called {} times:".format(key,
                                            meRedis.get(key).decode("utf-8")))
-    for i, j in tuple(inputs, outputs):
+    for i, j in tuple(zip(inputs, outputs)):
         print("{}(*('{}',)) -> {}".format(key, i.decode("utf-8"),
                                           j.decode("utf-8")))
 
