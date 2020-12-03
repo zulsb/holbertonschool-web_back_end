@@ -36,13 +36,6 @@ def get_user():
         return None
 
 
-@app.before_request
-def before_request():
-    """ before request
-    """
-    g.user = get_user()
-
-
 @app.route('/')
 def hello():
     """ Hello method.
@@ -58,6 +51,13 @@ def get_locale():
     if local and local in app.config['LANGUAGES']:
         return local
     return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
+@app.before_request
+def before_request():
+    """ before request
+    """
+    g.user = get_user()
 
 
 if __name__ == "__main__":
