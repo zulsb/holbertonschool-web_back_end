@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Mongo change school topics module.
+""" Mongo topic searched module.
 """
 
 
