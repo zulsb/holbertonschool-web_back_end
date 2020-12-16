@@ -1,3 +1,3 @@
 export default function getResponseFromAPI() {
-  return new Promise(() => { setTimeout(() => {}, 250); });
+  return new Promise(() => { console.log(''); });
 }
