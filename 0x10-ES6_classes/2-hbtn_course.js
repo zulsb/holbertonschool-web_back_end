@@ -24,5 +24,5 @@ export default class ClassRoom {
 
   get students() {
     return this._students;
-  }  
+	}
 }
