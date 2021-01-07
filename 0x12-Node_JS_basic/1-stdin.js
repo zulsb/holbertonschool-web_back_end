@@ -1,6 +1,6 @@
 process.stdin.setEncoding('utf8');
 
-process.log('Welcome to Holberton School, what is your name?\n');
+console.log('Welcome to Holberton School, what is your name?\n');
 
 process.stdin.on('readable', () => {
   const n = process.stdin.read();
