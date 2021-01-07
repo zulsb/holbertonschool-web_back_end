@@ -1,11 +1,11 @@
 process.stdin.setEncoding('utf8');
-console.stdout.write('Welcome to Holberton School, what is your name?\n');
+console.log('Welcome to Holberton School, what is your name?\n');
 process.stdin.on('readable', () => {
-  const yourName = process.stdin.read();
-  if (yourName !== null) {
-    process.stdout.write(`Your name is: ${yourName}`);
+  const yourname = process.stdin.read();
+  if (yourname !== null) {
+    process.stdout.write(`Your name is: ${yourname}`);
   }
 });
 process.stdin.on('end', () => {
-  console.stdout.write('This important software is now closing\n');
+  console.log('This important software is now closing\n');
 });
