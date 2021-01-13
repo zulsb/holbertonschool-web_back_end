@@ -1,4 +1,4 @@
-# NodeJS Basics
+# Unittests in JS
 ## Description
 
 .
@@ -6,15 +6,14 @@
 ---
 ## Content
 
-#### 0. Executing basic javascript with Node JS --> [File](./0-console.js)
-#### 1. Using Process stdin --> [File](./1-stdin.js)
-#### 2. Reading a file synchronously with Node JS --> [File](./2-read_file.js)
-#### 3. Reading a file asynchronously with Node JS --> [File](./3-read_file_async.js)
-#### 4. . Create a small HTTP server using Node's HTTP modul --> [File](./4-http.js)
-#### 5. Create a more complex HTTP server using Node's HTTP module --> [File](./5-http.js)
-#### 6. Create a small HTTP server using Express --> [File](./6-http_express.js)
-#### 7. Create a more complex HTTP server using Express --> [File](./7-http_express.js)
-#### 8. Organize a complex HTTP server using Express --> [File](./8-clean_set.js)
+#### 0. Basic test with Mocha and Node assertion library --> [Package](./package.json) | [File](./0-calcul.js) | [Test](./0-calcul.test.js)
+#### 1. Combining descriptions --> [File](./1-calcul.js) | [Test](./1-calcul.test.js)
+#### 2. Basic test using Chai assertion library --> [File](./2-calcul.js) | [Test](./2-calcul.test.js)
+#### 3. Spies --> [Utils](./utlis.js) | [File](./3-payment.js) | [Test](./3-payment.test.js)
+#### 4. Stubs --> [File](./4-payment.js) | [Test](./4-payment.test.js)
+#### 5. Hooks --> [File](./5-payment.js) | [Test](./5-payment.test.js)
+#### 6. Async tests with done --> [File](./6-payment_token.js) | [Test](./6-payment_token.test.js)
+#### 7. Skip --> [Test](./7-skip.test.js)
 
 ---
 
