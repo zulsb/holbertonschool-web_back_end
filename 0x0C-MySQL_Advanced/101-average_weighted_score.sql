@@ -1,6 +1,6 @@
 -- Creates a stored procedure that computes and store the average weighted score for all students.
 DELIMITER $$
-CREATE PROCEDURE ComputeAverageWeightedScoreForUser ()
+CREATE PROCEDURE ComputeAverageWeightedScoreForUsers ()
 BEGIN
 	UPDATE users
 	SET average_score = (SELECT sum(p.weight * c.score) / sum(p.weight) FROM projects AS p
