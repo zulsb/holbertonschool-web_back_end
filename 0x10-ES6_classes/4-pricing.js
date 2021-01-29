@@ -13,8 +13,18 @@ export default class Pricing {
     return this._currency;
   }
 
+  set amount(newAmount) {
+    if (typeof newAmount !== 'number') throw TypeError('amount must be a number');
+    this._amount = newAmount;
+  }
+
+  set currency(newCurrency) {
+    if (!(newCurrency instanceof Currency)) throw TypeError('currency must be a Currency');
+    this._currency = newCurrency;
+  }
+
   displayFullPrice() {
-    return `${this.amount} ${this.currency.name}`;
+    return `${this.amount} ${this.currency.name} (${this.currency.code})`;
   }
 
   static convertPrice(amount, conversionRate) {
