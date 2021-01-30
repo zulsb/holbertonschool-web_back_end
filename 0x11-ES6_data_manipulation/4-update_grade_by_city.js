@@ -1,5 +1,5 @@
 export default function updateStudentGradeByCity(listS, city, newGrades) {
-  return listStudents.filter(
+  return listS.filter(
     (student) => student.location === city,
   ).map((student) => Object.assign(
     student,
